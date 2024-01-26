@@ -530,6 +530,9 @@ if cmp then
         completion = {
             completeopt = 'menu,menuone,noinsert' -- TODO: Necessary copy of the default completeopt?
         },
+        experimental = {
+            ghost_text = true,
+        },
         mapping = {
             -- Key mappings based off of the standard autocomplete keybindings from VIM
             ['<c-n>'] = cmp.mapping.select_next_item(),
