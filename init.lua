@@ -423,7 +423,25 @@ end
 if treesitter_configs then
     treesitter_configs.setup {
         auto_install = true,
-        ensure_installed = { 'typescript', 'javascript', 'vimdoc', 'query', 'c', 'rust', 'comment', 'lua', 'python' },
+        ensure_installed = {
+            'c',
+            'c_sharp',
+            'comment',
+            'css',
+            'html',
+            'java',
+            'javascript',
+            'json',
+            'lua',
+            'python',
+            'query',
+            'rust',
+            'toml',
+            'tsx',
+            'typescript',
+            'vimdoc',
+            'yaml',
+        },
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,
