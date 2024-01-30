@@ -303,8 +303,8 @@ local on_attach = function(client, bufnr)
 
     -- Keyboard Mappings
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    keymap('n', '<c-k>', vim.diagnostic.goto_prev, bufopts)
-    keymap('n', '<c-j>', vim.diagnostic.goto_next, bufopts)
+    keymap('n', '<c-[>', vim.diagnostic.goto_prev, bufopts)
+    keymap('n', '<c-]>', vim.diagnostic.goto_next, bufopts)
     -- keymap('n', 'gl', vim.diagnostic.open_float, bufopts)
     keymap('n', 'ga', vim.lsp.buf.code_action, bufopts)
     keymap('n', 'gD', vim.lsp.buf.declaration, bufopts)
