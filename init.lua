@@ -178,46 +178,39 @@ local telescope_builtin = softrequire('telescope.builtin')
 local treesitter_configs = softrequire('nvim-treesitter.configs')
 
 -- NEOVIM SETTINGS
-local vimset = vim.opt
--- Standard Vim style settings
-vimset.background = 'dark'                                      -- Force a dark background for the colorscheme
-vimset.clipboard =
-"unnamed,unnamedplus"                                           -- Use both the "*" and "+" registers for yanks and deletes (puts things in the system clipboard)
-vimset.colorcolumn = '121'                                      -- Highlight column to show
-vimset.completeopt = 'menu,menuone,noinsert'                    -- Change how the completion menu is interacted with
-vimset.cursorline = true                                        -- Highlight the line the cursor is on.
-vimset.expandtab = true                                         -- Expand tabs into spaces
-vimset.fileformat =
-'unix'                                                          -- Explicitly state that files should use the unix style EOL characters.
-vimset.fillchars = 'fold: '                                     -- Sets the character that fills in a fold line
-vimset.foldexpr =
-'nvim_treesitter#foldexpr()'                                    -- Uses Treesitter to determine where code folding should occur
-vimset.foldlevel = 10                                           -- Sets the initial level at which folds will be closed
-vimset.foldmethod = 'expr'                                      -- Attempt to use the syntax of a file to set folds.
-vimset.formatoptions =
-'cqrto'                                                         -- Allow auto insertion of comment lines when using o or O on a comment.
-vimset.list = true                                              -- Show the listchars
-vimset.listchars = 'tab:|·,trail:¬,extends:>,precedes:<,nbsp:+' -- Characters to display when showing whitespace
-vimset.mouse = 'a'                                              -- Enable mouse mode
-vimset.number = true                                            -- Show the line number in the gutter.
-vimset.relativenumber = true                                    -- Relative line number
--- vimset.scrolloff = 8 -- Keep a minimum number of lines shown when paging down
-vimset.shiftround = true                                        -- Round indentation to shiftwidth
-vimset.shiftwidth = 4                                           -- Number of spaces a tab counts for when converting tabs to spaces
-vimset.shortmess = 'at'                                         -- Abbreviations and truncation of cmd messages
-vimset.showmatch = true                                         -- Show matching bracket
-vimset.signcolumn = 'yes'                                       -- Always show the gutter
-vimset.smartindent = true                                       -- Attempt to insert indentation to fit traditional languages.
-vimset.softtabstop = 4
-vimset.splitbelow = true                                        -- Split windows below when horizontal splitting
-vimset.splitright = true                                        -- Split windows right when vertical splitting
-vimset.swapfile = false                                         -- Disable the creation of swap files for open files
-vimset.tabstop = 4                                              -- Setting the value of spaces per tab
-vimset.termguicolors = true                                     -- Enable the truecolor GUI colors in a terminal
-vimset.undodir = os.getenv('HOME') .. '/.config/nvim/undodir'   -- Set a specific undo file directory
-vimset.undofile = true                                          -- Enable undo files
-vimset.updatetime = 50                                          -- Update time in milliseconds
-vimset.wrap = false                                             -- Do _not_ wrap lines
+vim.opt.background = 'dark'                                         -- Force a dark background for the colorscheme
+vim.opt.clipboard = "unnamed,unnamedplus"                           -- Use both the "*" and "+" registers for yanks and deletes (puts things in the system clipboard)
+vim.opt.colorcolumn = '121'                                         -- Highlight column to show
+vim.opt.completeopt = 'menu,menuone,noselect'                       -- Change how the completion menu is interacted with
+vim.opt.cursorline = true                                           -- Highlight the line the cursor is on.
+vim.opt.expandtab = true                                            -- Expand tabs into spaces
+vim.opt.fileformat = 'unix'                                         -- Explicitly state that files should use the unix style EOL characters.
+vim.opt.fillchars = 'fold: '                                        -- Sets the character that fills in a fold line
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'                     -- Uses Treesitter to determine where code folding should occur
+vim.opt.foldlevel = 10                                              -- Sets the initial level at which folds will be closed
+vim.opt.foldmethod = 'expr'                                         -- Attempt to use the syntax of a file to set folds.
+vim.opt.formatoptions = 'cqrto'                                     -- Allow auto insertion of comment lines when using o or O on a comment.
+vim.opt.list = true                                                 -- Show the listchars
+vim.opt.listchars = 'tab:|·,trail:¬,extends:>,precedes:<,nbsp:+'    -- Characters to display when showing whitespace
+vim.opt.mouse = 'a'                                                 -- Enable mouse mode
+vim.opt.number = true                                               -- Show the line number in the gutter.
+vim.opt.relativenumber = true                                       -- Relative line number
+vim.opt.shiftround = true                                           -- Round indentation to shiftwidth
+vim.opt.shiftwidth = 4                                              -- Number of spaces a tab counts for when converting tabs to spaces
+vim.opt.shortmess = 'at'                                            -- Abbreviations and truncation of cmd messages
+vim.opt.showmatch = true                                            -- Show matching bracket
+vim.opt.signcolumn = 'yes'                                          -- Always show the gutter
+vim.opt.smartindent = true                                          -- Attempt to insert indentation to fit traditional languages.
+vim.opt.softtabstop = 4                                             -- Number of spaces a tab counts for when converting tabs to spaces
+vim.opt.splitbelow = true                                           -- Split windows below when horizontal splitting
+vim.opt.splitright = true                                           -- Split windows right when vertical splitting
+vim.opt.swapfile = false                                            -- Disable the creation of swap files for open files
+vim.opt.tabstop = 4                                                 -- Setting the value of spaces per tab
+vim.opt.termguicolors = true                                        -- Enable the truecolor GUI colors in a terminal
+vim.opt.undodir = os.getenv('HOME') .. '/.config/nvim/undodir'      -- Set a specific undo file directory
+vim.opt.undofile = true                                             -- Enable undo files
+vim.opt.updatetime = 50                                             -- Update time in milliseconds
+vim.opt.wrap = false                                                -- Do _not_ wrap lines
 
 -- KEYBOARD SHORTCUTS
 vim.g.mapleader = ','
