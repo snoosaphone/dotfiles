@@ -525,7 +525,7 @@ if cmp then
             end
         },
         completion = {
-            completeopt = 'menu,menuone,noinsert' -- TODO: Necessary copy of the default completeopt?
+            completeopt = 'menu,menuone,noselect' -- TODO: Necessary copy of the default completeopt?
         },
         experimental = {
             ghost_text = true,
@@ -547,34 +547,34 @@ if cmp then
                 -- vim_item.kind = string.format('%s', vim_item.kind)
                 vim_item.menu = ({
                     buffer = '[Buf]',
-                    nvim_lsp = '[LSP]',
                     luasnip = '[Snips]',
+                    nvim_lsp = '[LSP]',
                     nvim_lua = '[Lua]'
                 })[entry.source.name]
                 return vim_item
             end,
             fields = { 'abbr', 'kind', 'menu' }
         },
-        sources = {
+        sources = cmp.config.sources({
             -- NOTE: the order of sources determines their loading priority in the autocomplete menu
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
             { name = 'path' },
-            { name = 'buffer',  keyword_length = 2 },
-        },
+        }, {
+            { name = 'buffer' },
+        })
     }
 
-    -- Enable the ':' character for the vim commandline completion, eg. for nvim commands
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-            { name = 'path' },
-            { name = 'cmdline', keyword_length = 2 }
-        }
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        })
     })
 
-    -- Enable the '/' and '?' character for the completion of in buffer elements only to autocomplete the search command
-    cmp.setup.cmdline({ '/', '?' }, {
+    cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
             { name = 'buffer' }
