@@ -74,24 +74,16 @@ local function execute(type)
     end
 end
 
--- PLUGIN MANAGEMENT
 -- Force install Packer if it is not found locally
-local function ensure_packer()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+local packer_need_bootstrap = false
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    vim.cmd [[packadd packer.nvim]]
+    packer_need_bootstrap = true
 end
 
--- Actually load Packer
-local packer_bootstrap = ensure_packer()
-
--- Manage plugins, and provide simple configurations if necessary, while storing a reference for more complicated setups or modules that are required elsewhere
--- in the configuration file
+-- Manage plugins
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Packer self management
 
@@ -163,7 +155,7 @@ require('packer').startup(function(use)
     use 'rcarriga/nvim-dap-ui'
 
     -- Automatically set up your configuration after cloning packer.nvim
-    if packer_bootstrap then
+    if packer_need_bootstrap then
         require('packer').sync()
     end
 end)
