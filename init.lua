@@ -127,6 +127,9 @@ require('packer').startup(function(use)
     use {
         'ellisonleao/gruvbox.nvim', -- Color Scheme
         config = function()
+            require('gruvbox').setup({
+                contrast = 'hard',
+            })
             vim.cmd('colorscheme gruvbox')
         end
     }
@@ -164,7 +167,6 @@ end)
 local cmp = softrequire('cmp')
 local comment = softrequire('Comment')
 local dap = softrequire('dap')
-local gruvbox = softrequire('gruvbox')
 local lualine = softrequire('lualine')
 local luasnip = softrequire('luasnip')
 local mason = softrequire('mason')
@@ -574,12 +576,6 @@ if cmp then
         sources = {
             { name = 'buffer' }
         }
-    })
-end
-
-if gruvbox then
-    gruvbox.setup({
-        contrast = 'hard',
     })
 end
 
