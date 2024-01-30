@@ -273,7 +273,7 @@ keymap('n', '<leader>eb', function() execute('benchmark') end)
 keymap('n', '<leader>gis', vim.cmd.Git)
 keymap('n', '<leader>gid', vim.cmd.Gdiff)
 
-keymap('n', '<leader>eo', ':Explore<CR>', options)
+keymap('n', '<leader>eo', ':Lexplore<CR>', options)
 
 -- Auto-recompile and load on init.lua file changes
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
