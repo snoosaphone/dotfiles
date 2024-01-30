@@ -282,13 +282,12 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     command = "source % | PackerCompile"
 })
 
--- Fix for treesitter folds
--- TODO: Determine if this is required
--- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew', 'BufWinEnter' }, {
--- pattern = '*',
--- group = vim.api.nvim_create_augroup('telescope_fold_workaround', { clear = true }),
--- command = 'set foldexpr=nvim_treesitter#foldexpr()',
--- })
+-- Fix for treesitter folds, as folds are not recalculated upon buffer changes (especially when pasting text)
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew', 'BufWinEnter' }, {
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('telescope_fold_workaround', { clear = true }),
+    command = 'set foldexpr=nvim_treesitter#foldexpr()',
+})
 
 -- Create a new copy of capabilities and enable the snippetSupport
 local capabilities = vim.lsp.protocol.make_client_capabilities()
