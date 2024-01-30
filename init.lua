@@ -329,21 +329,14 @@ end
 
 -- Module loading
 if mason and mason_lspconfig and nvim_lsp then
-    mason.setup {
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
-        }
-    }
+    mason.setup {}
 
     mason_lspconfig.setup {
         automatic_installation = true,
     }
 
     mason_lspconfig.setup_handlers {
+        -- Default LSP handler
         function(server_name)
             nvim_lsp[server_name].setup {
                 capabilities = capabilities,
@@ -389,7 +382,7 @@ if mason and mason_lspconfig and nvim_lsp then
     }
 
     -- Manually adding gdscript as Mason doesn't handle this anymore
-    nvim_lsp.gdscript.setup {}
+    -- nvim_lsp.gdscript.setup {}
 end
 
 if telescope and telescope_builtin then
