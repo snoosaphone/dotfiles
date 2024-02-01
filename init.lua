@@ -181,7 +181,7 @@ local treesitter_configs = softrequire('nvim-treesitter.configs')
 vim.opt.background = 'dark'                                         -- Force a dark background for the colorscheme
 vim.opt.clipboard = "unnamed,unnamedplus"                           -- Use both the "*" and "+" registers for yanks and deletes (puts things in the system clipboard)
 vim.opt.colorcolumn = '121'                                         -- Highlight column to show
-vim.opt.completeopt = 'menu,menuone,noselect'                       -- Change how the completion menu is interacted with
+vim.opt.completeopt = 'menu,menuone,noinsert'                       -- Change how the completion menu is interacted with
 vim.opt.cursorline = true                                           -- Highlight the line the cursor is on.
 vim.opt.expandtab = true                                            -- Expand tabs into spaces
 vim.opt.fileformat = 'unix'                                         -- Explicitly state that files should use the unix style EOL characters.
@@ -525,7 +525,7 @@ if cmp then
             end
         },
         completion = {
-            completeopt = 'menu,menuone,noselect' -- TODO: Necessary copy of the default completeopt?
+            completeopt = 'menu,menuone,noinsert' -- TODO: Necessary copy of the default completeopt?
         },
         experimental = {
             ghost_text = true,
