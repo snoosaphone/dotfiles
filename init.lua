@@ -275,6 +275,10 @@ keymap('n', '<leader>gid', vim.cmd.Gdiff)
 
 keymap('n', '<leader>eo', ':Lexplore<CR>', options)
 
+keymap('n', '<a-c>', ':noh<CR>', options)
+
+keymap('n', '<leader>rn', ':%s///g<<', options)
+
 -- Auto-recompile and load on init.lua file changes
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     pattern = { 'init.lua' },
@@ -313,7 +317,7 @@ local on_attach = function(client, bufnr)
     keymap('n', 'gi', vim.lsp.buf.implementation, bufopts)
     keymap('n', 'gs', vim.lsp.buf.signature_help, bufopts)
     keymap('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-    keymap('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+    -- keymap('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
     keymap('n', 'gr', vim.lsp.buf.references, bufopts)
     keymap('n', '<leader><leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
@@ -400,6 +404,10 @@ if telescope and telescope_builtin then
                 '.uproject$', -- Unreal Engine
                 '-workspace$',
             },
+            layout_strategy = 'vertical',
+            layout_config = {
+                height = 0.8
+            },
             results_title = false,
             prompt_prefix = '   ',
             selection_caret = '➤ ',
@@ -439,7 +447,6 @@ if treesitter_configs then
             'toml',
             'tsx',
             'typescript',
-            'vimdoc',
             'yaml',
         },
         highlight = {
@@ -525,7 +532,7 @@ if cmp then
             end
         },
         completion = {
-            completeopt = 'menu,menuone,noinsert' -- TODO: Necessary copy of the default completeopt?
+            completeopt = 'menu,menuone,noinsert'
         },
         experimental = {
             ghost_text = true,
@@ -568,7 +575,8 @@ if cmp then
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-            { name = 'path' }
+            { name = 'path' },
+            { name = 'buffer' }
         }, {
             { name = 'cmdline' }
         })
