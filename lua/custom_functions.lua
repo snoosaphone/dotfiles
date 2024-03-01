@@ -9,16 +9,16 @@ end
 local function execute(type)
     local command_table = {
         run = {
-            java = "java %",
-            python = "python %",
-            rust = "cargo run",
+            java = 'java %',
+            python = 'python %',
+            rust = 'cargo run',
         },
         test = {
-            python = "python test",
-            rust = "cargo test",
+            python = 'python test',
+            rust = 'cargo test',
         },
         benchmark = {
-            rust = "cargo bench",
+            rust = 'cargo bench',
         },
     }
     vim.api.nvim_command('write')
