@@ -23,7 +23,7 @@ return {
                 selection_caret = '➤ ',
                 mappings = {
                     i = {
-                        ["<ESC>"] = actions.close
+                        ['<ESC>'] = actions.close
                     },
                 },
             },
@@ -33,12 +33,14 @@ return {
         'nvim-lua/plenary.nvim'
     },
     keys = {
-        { '<leader>ff', ":Telescope find_files<CR>" },
-        { '<leader>fg', ":Telescope git_commits<CR>" },
-        { '<leader>fh', ":Telescope help_tags<CR>" },
-        { '<leader>fr', ":Telescope live_grep<CR>" },
-        { '<leader>fm', ":Telescope marks<CR>" },
-        { '<leader>fb', ":Telescope buffers<CR>" },
-        { '<leader>fd', ":Telescope diagnostics<CR>" },
+        { '<leader>ff', '<cmd>Telescope find_files<CR>' },
+        { '<leader>fg', '<cmd>Telescope git_commits<CR>' },
+        { '<leader>fh', '<cmd>Telescope help_tags<CR>' },
+        { '<leader>fr', '<cmd>Telescope live_grep<CR>' },
+        { '<leader>fm', '<cmd>Telescope marks<CR>' },
+        { '<leader>fb', '<cmd>Telescope buffers<CR>' },
+        { '<leader>fd', '<cmd>Telescope diagnostics<CR>' },
+        { '<leader>fs', '<cmd>Telescope lsp_document_symbols<CR>' },
+        { '<leader>fw', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>' },
     },
 }

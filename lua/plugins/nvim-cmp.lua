@@ -85,6 +85,6 @@ return {
             lazy = false,
         },
     },
-    event = "InsertEnter",
+    event = 'InsertEnter',
     lazy = false,
 }
