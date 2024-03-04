@@ -22,6 +22,18 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', options)
 vim.keymap.set('n', '<C-h>', '<C-w>h', options)
 vim.keymap.set('n', '<C-l>', '<C-w>l', options)
 
+vim.keymap.set('n', 'wj', '<C-w>j', options)
+vim.keymap.set('n', 'wk', '<C-w>k', options)
+vim.keymap.set('n', 'wh', '<C-w>h', options)
+vim.keymap.set('n', 'wl', '<C-w>l', options)
+
+-- Increment and decrement under the cursor
+vim.keymap.set('n', '+', '<C-a>')
+vim.keymap.set('v', '+', '<C-a>')
+
+vim.keymap.set('n', '-', '<C-x>')
+vim.keymap.set('v', '-', '<C-x>')
+
 -- Don't move the cursor when appending the following line to the current
 vim.keymap.set('n', 'J', 'mzJ`z')
 
@@ -51,4 +63,4 @@ vim.keymap.set('n', '<leader>eo', ':Lexplore<CR>', options)
 
 vim.keymap.set('n', '<leader>rn', ':%s/<C-r><C-w>//g<Left><Left>', options)
 
-vim.keymap.set('n', '<leader>L', ':Lazy<CR>', options)
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>', options)
