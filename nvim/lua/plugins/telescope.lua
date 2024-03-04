@@ -33,14 +33,66 @@ return {
         'nvim-lua/plenary.nvim'
     },
     keys = {
-        { '<leader>ff', '<cmd>Telescope find_files<CR>' },
-        { '<leader>fg', '<cmd>Telescope git_commits<CR>' },
-        { '<leader>fh', '<cmd>Telescope help_tags<CR>' },
-        { '<leader>fr', '<cmd>Telescope live_grep<CR>' },
-        { '<leader>fm', '<cmd>Telescope marks<CR>' },
-        { '<leader>fb', '<cmd>Telescope buffers<CR>' },
-        { '<leader>fd', '<cmd>Telescope diagnostics<CR>' },
-        { '<leader>fs', '<cmd>Telescope lsp_document_symbols<CR>' },
-        { '<leader>fw', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>' },
+        {
+            ';f',
+            function()
+                require('telescope.builtin').find_files({
+                    no_ignore = false,
+                    hidden = true,
+                    file_ignore_patterns = {
+                        '.git',
+                        '.node_modules',
+                    },
+                })
+            end,
+        },
+        {
+            ';r',
+            function()
+                require('telescope.builtin').live_grep()
+            end,
+        },
+        {
+            '\\\\',
+            function()
+                require('telescope.builtin').buffers()
+            end,
+        },
+        {
+            ';h',
+            function()
+                require('telescope.builtin').help_tags()
+            end,
+        },
+        {
+            ';;',
+            function()
+                require('telescope.builtin').resume()
+            end,
+        },
+        {
+            ';d',
+            function()
+                require('telescope.builtin').diagnostics()
+            end,
+        },
+        {
+            ';t',
+            function()
+                require('telescope.builtin').treesitter()
+            end,
+        },
+        {
+            ';s',
+            function()
+                require('telescope.builtin').lsp_document_symbols()
+            end
+        },
+        {
+            ';w',
+            function()
+                require('telescope.builtin').lsp_dynamic_workspace_symbols()
+            end
+        },
     },
 }
