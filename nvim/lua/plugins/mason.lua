@@ -14,8 +14,8 @@ return {
 
             -- Keyboard Mappings
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set('n', '<c-[>', vim.diagnostic.goto_prev, bufopts)
-            vim.keymap.set('n', '<c-]>', vim.diagnostic.goto_next, bufopts)
+            vim.keymap.set('n', '<C-[>', vim.diagnostic.goto_prev, bufopts)
+            vim.keymap.set('n', '<C-]>', vim.diagnostic.goto_next, bufopts)
             -- vim.keymap.set('n', 'gl', vim.diagnostic.open_float, bufopts)
             vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)

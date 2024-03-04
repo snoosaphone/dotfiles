@@ -15,12 +15,12 @@ return {
                 ghost_text = true,
             },
             mapping = {
-                ['<c-n>'] = cmp.mapping.select_next_item(),
-                ['<c-p>'] = cmp.mapping.select_prev_item(),
-                ['<c-j>'] = cmp.mapping.scroll_docs(-4),
-                ['<c-k>'] = cmp.mapping.scroll_docs(4),
-                ['<c-space>'] = cmp.mapping.complete(),
-                ['<c-y>'] = cmp.mapping.confirm({
+                ['<C-n>'] = cmp.mapping.select_next_item(),
+                ['<C-p>'] = cmp.mapping.select_prev_item(),
+                ['<C-j>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-k>'] = cmp.mapping.scroll_docs(4),
+                ['<C-space>'] = cmp.mapping.complete(),
+                ['<C-y>'] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
                 }),
