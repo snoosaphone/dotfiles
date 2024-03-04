@@ -49,4 +49,6 @@ vim.keymap.set('n', '<leader>eb', function() cf.execute('benchmark') end)
 
 vim.keymap.set('n', '<leader>eo', ':Lexplore<CR>', options)
 
-vim.keymap.set('n', '<leader>rn', ':%s/<c-r><c-w>//g<Left><Left>', options)
+vim.keymap.set('n', '<leader>rn', ':%s/<C-r><C-w>//g<Left><Left>', options)
+
+vim.keymap.set('n', '<leader>L', ':Lazy<CR>', options)
