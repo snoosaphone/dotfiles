@@ -1,5 +1,4 @@
 local cf = require('custom_functions')
-
 vim.g.mapleader = ','
 
 -- Standard keybinding options
@@ -21,11 +20,6 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', options)
 vim.keymap.set('n', '<C-k>', '<C-w>k', options)
 vim.keymap.set('n', '<C-h>', '<C-w>h', options)
 vim.keymap.set('n', '<C-l>', '<C-w>l', options)
-
-vim.keymap.set('n', 'wj', '<C-w>j', options)
-vim.keymap.set('n', 'wk', '<C-w>k', options)
-vim.keymap.set('n', 'wh', '<C-w>h', options)
-vim.keymap.set('n', 'wl', '<C-w>l', options)
 
 -- Increment and decrement under the cursor
 vim.keymap.set('n', '+', '<C-a>')
