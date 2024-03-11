@@ -5,7 +5,6 @@ return {
             'rcarriga/nvim-dap-ui',
             config = function()
                 require('dapui').setup({
-                    -- icons
                     mappings = {
                         open = 'o',
                         remove = 'd',
@@ -17,15 +16,16 @@ return {
                         {
                             elements = {
                                 'scopes',
-                                'watches',
+                                'breakpoints',
+                                'stacks',
                             },
                             size = 0.33,
                             position = 'right',
                         },
                         {
                             elements = {
-                                'terminal',
-                                'breakpoints',
+                                'console',
+                                'watches',
                             },
                             size = 0.2,
                             position = 'bottom',
@@ -66,7 +66,8 @@ return {
             dapui.close()
         end
 
-        vim.fn.sign_define('DapBreakpoint', { text = '🐞', texthl = '', lineh = '', numhl = '' })
+        vim.fn.sign_define('DapBreakpoint', { text = 'ᛒ', texthl = '', lineh = '', numhl = '' })
+        vim.fn.sign_define('DapBreakpointCondition', { text = '🝌', texthl = '', lineh = '', numhl = '' })
         vim.fn.sign_define('DapStopped', { text = '⮞' })
     end,
     keys = {
