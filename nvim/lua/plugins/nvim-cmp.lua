@@ -52,7 +52,7 @@ return {
                 { name = 'path' },
                 { name = 'buffer' },
             }, {
-                { name = 'cmdline' },
+                { name = 'cmdline', keyword_length = 1 },
             })
         })
 
