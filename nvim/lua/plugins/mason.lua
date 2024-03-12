@@ -59,10 +59,10 @@ return {
                     settings = {
                         ['rust-analyzer'] = {
                             checkOnSave = true,
-                            check = {
-                                command = 'clippy',
-                                extraArgs = { '--', '-Dclippy::all', '-Wclippy::pedantic' },
-                            },
+                            -- check = {
+                                -- command = 'clippy',
+                                -- extraArgs = { '--', '-Dclippy::all', '-Wclippy::pedantic' },
+                            -- },
                             diagnostics = {
                                 enable = true,
                                 experimental = {
