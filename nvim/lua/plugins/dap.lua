@@ -69,6 +69,25 @@ return {
         vim.fn.sign_define('DapBreakpoint', { text = 'ᛒ', texthl = '', lineh = '', numhl = '' })
         vim.fn.sign_define('DapBreakpointCondition', { text = '🝌', texthl = '', lineh = '', numhl = '' })
         vim.fn.sign_define('DapStopped', { text = '⮞' })
+
+        dap.adapters.gdb = {
+            type = 'executable',
+            command = 'gdb',
+            args = { '-i', 'dap' }
+        }
+
+        dap.configurations.rust = {
+            {
+                name = 'Launch',
+                type = 'gdb',
+                request = 'launch',
+                program = function()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopAtBeginningOfMainSubprogram = false,
+            },
+        }
     end,
     keys = {
         {
