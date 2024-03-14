@@ -105,6 +105,9 @@ return {
             '<F5>', function() require('dap').continue() end
         },
         {
+            '<F6>', function() require('dap').run_to_cursor() end
+        },
+        {
             '<F8>', function() require('dap').terminate() end
         },
         {
