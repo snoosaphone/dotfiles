@@ -91,33 +91,50 @@ return {
     end,
     keys = {
         {
-            '<leader>b', function() require('dap').toggle_breakpoint() end
+            '<leader>b',
+            function() require('dap').toggle_breakpoint() end,
+            desc = 'DAP: Toggle Breakpoint',
         },
         {
-            '<leader>B', function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end
+            '<leader>B',
+            function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+            desc = 'DAP: Set conditional breakpoint',
         },
         {
             '<leader>dh',
             function() require('dap.ui.widgets').hover() end,
-            mode = 'n', 'v'
+            mode = 'n', 'v',
+            desc = 'DAP: Debug hover',
         },
         {
-            '<F5>', function() require('dap').continue() end
+            '<F5>',
+            function() require('dap').continue() end,
+            desc = 'DAP: Continue',
         },
         {
-            '<F6>', function() require('dap').run_to_cursor() end
+            '<F6>',
+            function() require('dap').run_to_cursor() end,
+            desc = 'DAP: Run to cursor',
         },
         {
-            '<F8>', function() require('dap').terminate() end
+            '<F8>',
+            function() require('dap').terminate() end,
+            desc = 'DAP: Terminate debug session',
         },
         {
-            '<F10>', function() require('dap').step_over() end
+            '<F10>',
+            function() require('dap').step_over() end,
+            desc = 'DAP: Step Over',
         },
         {
-            '<F11>', function() require('dap').step_into() end
+            '<F11>',
+            function() require('dap').step_into() end,
+            desc = 'DAP: Step Into',
         },
         {
-            '<F12>', function() require('dap').step_out() end
+            '<F12>',
+            function() require('dap').step_out() end,
+            desc = 'DAP: Step Out',
         },
     },
 }
