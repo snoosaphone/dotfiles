@@ -9,6 +9,9 @@
 return {
     execute = function(type)
         local command_table = {
+            build = {
+                rust = 'cargo build',
+            },
             run = {
                 java = 'java %',
                 python = 'python %',
