@@ -51,7 +51,8 @@ vim.keymap.set('n', '<space>', 'za')
 -- Keymaps for custom functions
 vim.keymap.set('n', '<leader>et', function() cf.execute('test') end)
 vim.keymap.set('n', '<leader>er', function() cf.execute('run') end)
-vim.keymap.set('n', '<leader>eb', function() cf.execute('benchmark') end)
+vim.keymap.set('n', '<leader>eb', function() cf.execute('build') end)
+vim.keymap.set('n', '<leader>em', function() cf.execute('benchmark') end)
 
 vim.keymap.set('n', '<leader>eo', ':Lexplore<CR>', options)
 
