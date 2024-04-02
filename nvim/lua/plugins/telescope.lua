@@ -3,30 +3,30 @@ return {
     config = function(_, opts)
         local telescope = require('telescope')
         local actions = require('telescope.actions')
-        -- local action_state = require('telescope.actions.state')
+        local action_state = require('telescope.actions.state')
         local fb_actions = telescope.extensions.file_browser.actions
 
-        -- local custom_actions = {}
+        local custom_actions = {}
 
-        -- function custom_actions.grep_multi_select(prompt_bufnr)
-            -- local function get_table_size(t)
-                -- local count = 0
-                -- for _ in pairs(t) do
-                    -- count = count + 1
-                -- end
-                -- return count
-            -- end
+        function custom_actions.grep_multi_select(prompt_bufnr)
+            local function get_table_size(t)
+                local count = 0
+                for _ in pairs(t) do
+                    count = count + 1
+                end
+                return count
+            end
 
-            -- local picker = action_state.get_current_picker(prompt_bufnr)
-            -- local num_selections = get_table_size(picker:get_multi_selection())
+            local picker = action_state.get_current_picker(prompt_bufnr)
+            local num_selections = get_table_size(picker:get_multi_selection())
 
-            -- if num_selections > 1 then
-                -- actions.send_selected_to_qflist(prompt_bufnr)
-                -- actions.open_qflist()
-            -- else
-                -- actions.file_edit(prompt_bufnr)
-            -- end
-        -- end
+            if num_selections > 1 then
+                actions.send_selected_to_qflist(prompt_bufnr)
+                actions.open_qflist()
+            else
+                actions.file_edit(prompt_bufnr)
+            end
+        end
 
         opts.defaults = {
             file_ignore_patterns = {
@@ -42,12 +42,8 @@ return {
             layout_config = { prompt_position = 'top' },
             layout_strategy = 'horizontal',
             mappings = {
-                n = {
-                    -- ['<cr>'] = custom_actions.grep_multi_select,
-                },
                 i = {
                     ['<ESC>'] = actions.close,
-                    -- ['<cr>'] = custom_actions.grep_multi_select,
                 },
             },
             prompt_prefix = '   ',
@@ -67,6 +63,11 @@ return {
             },
             grep_string = {
                 initial_mode = 'normal',
+                mappings = {
+                    ['n'] = {
+                        ['<cr>'] = custom_actions.grep_multi_select,
+                    },
+                },
             },
         }
 
@@ -161,7 +162,9 @@ return {
         },
         {
             '<leader>rn',
-            -- custom_actions.grep_multi_select
+            function()
+                require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
+            end
         },
         {
             'sf',
