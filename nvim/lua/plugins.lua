@@ -35,4 +35,5 @@ require('lazy').setup({
     'tpope/vim-surround',
     require('plugins/floaterm'),
     require('plugins/vim-godot'),
+    require('plugins/markdown-preview'),
 })
