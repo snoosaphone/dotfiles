@@ -40,6 +40,21 @@ return {
 
         mason_lspconfig.setup {
             automatic_installation = true,
+            ensure_installed = {
+                'ansiblels',
+                'clangd',
+                'emmet_ls',
+                'gopls',
+                'intelephense',
+                'jdtls',
+                'lua_ls',
+                'marksman',
+                'pylsp',
+                'rust_analyzer',
+                'tsserver',
+                'yamlls',
+                'volar',
+            }
         }
 
         local lspconfig = require('lspconfig')
@@ -103,6 +118,21 @@ return {
                     }
                 }
             end,
+
+            lspconfig.gdscript.setup {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                flags = {
+                    debounce_text_changes = 100,
+                }
+            }
+
+            -- ['gdshader_lsp'] = function()
+                -- lspconfig.gdshader_lsp.setup {
+                    -- capabilities = capabilities,
+                    -- on_attach = on_attach,
+                -- }
+            -- end,
         }
     end,
     dependencies = {
