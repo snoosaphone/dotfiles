@@ -43,6 +43,7 @@
 -- Created: 7/2/2012
 
 require('custom_functions')
+require('custom_commands')
 require('keymappings')
 require('settings')
 require('autocmds')
