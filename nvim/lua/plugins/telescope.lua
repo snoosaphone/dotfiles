@@ -100,8 +100,8 @@ return {
                     no_ignore = false,
                     hidden = true,
                     file_ignore_patterns = {
-                        '.git',
-                        '.node_modules',
+                        '.git/',
+                        '.node_modules/',
                     },
                 })
             end,
