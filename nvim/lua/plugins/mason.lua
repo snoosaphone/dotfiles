@@ -42,6 +42,7 @@ return {
             automatic_installation = true,
             ensure_installed = {
                 'ansiblels',
+                'arduino_language_server',
                 'clangd',
                 'emmet_ls',
                 'gopls',
