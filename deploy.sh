@@ -1,7 +1,23 @@
+#Zsh
+if [ ! -L $HOME/.zshrc ]
+then
+    ln -fs $PWD/zshrc $HOME/.zshrc
+fi
+
 # Neovim
 mkdir -p $HOME/.config/nvim
-ln -fs $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
-ln -fs $PWD/nvim/lua $HOME/.config/nvim/lua
+if [ ! -L $HOME/.config/nvim/init.lua ]
+then
+    ln -fs $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
+fi
+
+if [ ! -L $HOME/.config/nvim/lua ]
+then
+    ln -fs $PWD/nvim/lua $HOME/.config/nvim/lua
+fi
 
 # Tmux
-ln -fs $PWD/tmux.conf $HOME/.tmux.conf
+if [ ! -L $HOME/.tmux.conf ]
+then
+    ln -fs $PWD/tmux.conf $HOME/.tmux.conf
+fi
