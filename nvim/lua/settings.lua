@@ -1,6 +1,5 @@
 vim.opt.background = 'dark'                                         -- Force a dark background for the colorscheme
 vim.opt.clipboard = 'unnamed,unnamedplus'                           -- Use both the "*" and "+" registers for yanks and deletes (puts things in the system clipboard)
-vim.opt.colorcolumn = '121'                                         -- Highlight column to show
 vim.opt.completeopt = 'menu,menuone,noinsert'                       -- Change how the completion menu is interacted with
 vim.opt.cursorcolumn = true                                         -- Highlight the column the cursor is on
 vim.opt.cursorline = true                                           -- Highlight the line the cursor is on.

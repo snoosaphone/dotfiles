@@ -45,7 +45,6 @@ return {
                 'arduino_language_server',
                 'clangd',
                 'emmet_ls',
-                'gopls',
                 'intelephense',
                 'jdtls',
                 'lua_ls',
