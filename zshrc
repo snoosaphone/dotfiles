@@ -33,6 +33,7 @@ plugins=(
     git
     history
     zsh-autosuggestions
+    virtualenvwrapper
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -45,8 +46,7 @@ export LC_ALL=en_US.UTF-8
 # Paths to prepend to system path
 path=($GOPATH/bin
       $HOME/.cargo/bin
-      $HOME/virtual_machines
-      $HOME/unreal_editor_5/Engine/Binaries/Linux
+      $HOME/.local/bin
       $path)
 
 if command -v keychain &> /dev/null
