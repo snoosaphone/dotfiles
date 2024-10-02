@@ -113,7 +113,7 @@ return {
             end,
         },
         {
-            '\\\\',
+            ';b',
             function()
                 require('telescope.builtin').buffers()
             end,
@@ -167,7 +167,7 @@ return {
             end
         },
         {
-            'sf',
+            ';e',
             function()
                 local telescope = require('telescope')
 
