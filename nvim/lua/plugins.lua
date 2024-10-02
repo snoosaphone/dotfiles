@@ -27,7 +27,6 @@ require('lazy').setup({
     -- require('plugins/inc-rename'),
     require('plugins/treesitter'),
     require('plugins/gitsigns'),
-    -- require('plugins/vim-gitgutter'),
     require('plugins/luasnip'),
     require('plugins/nvim-cmp'),
     require('plugins/lualine'),
