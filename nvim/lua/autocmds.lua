@@ -21,6 +21,9 @@ vim.api.nvim_create_autocmd({ 'BufReadPre' }, {
         if file_size > max_filesize_MiB then
             -- print(string.format('Big file detected above %sMiB. Disabling syntax, treesitter, and folding.', max_filesize_MiB))
             vim.api.nvim_command('set foldmethod=manual')
+            vim.api.nvim_command('set noswapfile')
+            vim.api.nvim_command('set noundofile')
+            vim.api.nvim_command('set noloadplugins')
         end
     end,
 })
