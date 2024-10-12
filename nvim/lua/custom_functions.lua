@@ -18,7 +18,7 @@ return {
                 rust = 'cargo run',
             },
             test = {
-                python = 'python test',
+                python = 'pytest',
                 rust = 'cargo test',
             },
             benchmark = {
