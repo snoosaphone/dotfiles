@@ -29,13 +29,13 @@ return {
             vim.keymap.set('n', '<leader><leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
             -- DAP debug
-            -- if dap then
-                -- vim.keymap.set('n', '<F5>', function() dap.continue() end, bufopts)
-                -- vim.keymap.set('n', '<F10>', function() dap.step_over() end, bufopts)
-                -- vim.keymap.set('n', '<F11>', function() dap.step_into() end, bufopts)
-                -- vim.keymap.set('n', '<F12>', function() dap.step_out() end, bufopts)
-                -- vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, bufopts)
-            -- end
+            if dap then
+                vim.keymap.set('n', '<F5>', function() dap.continue() end, bufopts)
+                vim.keymap.set('n', '<F10>', function() dap.step_over() end, bufopts)
+                vim.keymap.set('n', '<F11>', function() dap.step_into() end, bufopts)
+                vim.keymap.set('n', '<F12>', function() dap.step_out() end, bufopts)
+                vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, bufopts)
+            end
         end
 
         mason_lspconfig.setup {
@@ -44,13 +44,13 @@ return {
                 'ansiblels',
                 'arduino_language_server',
                 'clangd',
-                -- 'emmet_ls',
                 'intelephense',
                 'jdtls',
                 'lua_ls',
                 'marksman',
                 'pylsp',
                 'rust_analyzer',
+                -- 'r_language_server',
                 'ts_ls',
                 'yamlls',
                 'volar',

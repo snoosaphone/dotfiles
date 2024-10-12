@@ -1,10 +1,5 @@
---     use 'tpope/vim-fugitive'     -- Git integration
--- 
---     -- Experimental
---     use 'mfussenegger/nvim-dap'
---     use 'rcarriga/nvim-dap-ui'
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     'git',
@@ -15,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
