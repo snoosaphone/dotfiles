@@ -34,7 +34,7 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 -- Switch or close buffers in the window
 vim.keymap.set('n', '<leader>n', ':bn<CR>', options)
 vim.keymap.set('n', '<leader>p', ':bp<CR>', options)
-vim.keymap.set('n', '<leader>x', ':bd<CR>', options)
+vim.keymap.set('n', '<leader>x', ':bp<bar>sp<bar>bn<bar>bd<CR>', options)
 -- vim.keymap.set('n', '<leader>x', ':bp|bd #<CR>', options)
 
 -- Toggle spellcheck
