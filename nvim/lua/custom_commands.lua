@@ -1,6 +1,7 @@
 vim.api.nvim_create_user_command('FindAndReplace', function(opts)
-    vim.api.nvim_command(string.format('cdo s/%s/%s', opts.fargs[1], opts.fargs[2]))
-    vim.api.nvim_command('cfdo update')
+    -- Update each quickfix location using substitute, update the files to save changes, close the opened buffers and close the quickfix window
+    -- TODO: Does not close the buffers opened through changes
+    vim.api.nvim_command(string.format('cdo s/%s/%s/', opts.fargs[1], opts.fargs[2]) .. '| update | cclose')
 end, { nargs = '*' })
 
 vim.api.nvim_set_keymap(

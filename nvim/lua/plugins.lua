@@ -20,7 +20,6 @@ require('lazy').setup({
     require('plugins/comment'),
     require('plugins/dap'),
     require('plugins/dap-python'),
-    -- require('plugins/inc-rename'),
     require('plugins/treesitter'),
     require('plugins/gitsigns'),
     require('plugins/luasnip'),

@@ -43,17 +43,19 @@ return {
             ensure_installed = {
                 'ansiblels',
                 'arduino_language_server',
+                'bashls',
                 'clangd',
+                -- 'hadolint', -- Dockerfile linting
                 'intelephense',
-                'jdtls',
+                -- 'jdtls', -- java
                 'lua_ls',
-                'marksman',
+                'marksman', -- markdown
                 'pylsp',
                 'rust_analyzer',
-                -- 'r_language_server',
-                'ts_ls',
+                -- 'snyk',
+                'ts_ls', -- Typscript
+                -- 'volar', -- Vue
                 'yamlls',
-                'volar',
             }
         }
 

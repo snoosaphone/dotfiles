@@ -34,8 +34,7 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 -- Switch or close buffers in the window
 vim.keymap.set('n', '<leader>n', ':bn<CR>', options)
 vim.keymap.set('n', '<leader>p', ':bp<CR>', options)
-vim.keymap.set('n', '<leader>x', ':bp<bar>sp<bar>bn<bar>bd<CR>', options)
--- vim.keymap.set('n', '<leader>x', ':bp|bd #<CR>', options)
+vim.keymap.set('n', '<leader>x', ':bp<bar>vs<bar>bn<bar>bd<CR>', options) -- Previous buffer, split, next buffer, delete buffer
 
 -- Toggle spellcheck
 vim.keymap.set('n', '<leader>s', ':set spell!<CR>', options)
@@ -56,7 +55,5 @@ vim.keymap.set('n', '<leader>eb', function() cf.execute('build') end)
 vim.keymap.set('n', '<leader>em', function() cf.execute('benchmark') end)
 
 vim.keymap.set('n', '<leader>eo', ':Lexplore<CR>', options)
-
--- vim.keymap.set('n', '<leader>rn', ':%s/<C-r><C-w>//g<Left><Left>', options)
 
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', options)

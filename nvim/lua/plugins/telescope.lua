@@ -157,12 +157,6 @@ return {
             end
         },
         {
-            ';g',
-            function()
-                require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})
-            end
-        },
-        {
             '<leader>rn',
             function()
                 require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })
