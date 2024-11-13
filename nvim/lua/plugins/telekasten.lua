@@ -18,7 +18,7 @@ end
 
 vim.api.nvim_create_user_command('ToggleTODO', function()
     local current_line = vim.api.nvim_get_current_line()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
 
     local new_line = toggleTODO(current_line)
 
