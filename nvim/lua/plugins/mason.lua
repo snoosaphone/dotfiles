@@ -50,6 +50,7 @@ return {
                 -- 'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
+                -- 'prettier',
                 'pylsp',
                 'rust_analyzer',
                 -- 'snyk',

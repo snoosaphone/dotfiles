@@ -7,18 +7,11 @@ then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-if [ ! -d $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]
-then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-fi
-
+### ZSH Configuration
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="fb-custom"
-
-# Uncomment the following line to use case-sensitive completion.
-#CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -27,37 +20,51 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment one of the following lines to change the auto-update behavior
 zstyle ':omz:update' mode reminder frequency 14
 
+# Plugins
+# Install the zsh-autosuggestions plugin if it doesn't exist
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]
+then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
 plugins=(
+    aws
     copypath
     dotenv
     git
     history
     zsh-autosuggestions
-    virtualenvwrapper
+    virtualenv
+    virtualenvwrapper # Used for autoloading project .venvs
 )
 
+# Load Oh My ZSH
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+# ZSH options
+setopt NO_clobber # Do not clobber files by default
+setopt hist_ignore_all_dups # Replace old history with the newest call to an identical call
+setopt hist_ignore_space # Remove history lines that start with spaces
+
+### User configuration
+export EDITOR=nvim
 
 # Paths to prepend to system path
-path=($GOPATH/bin
-      $HOME/.cargo/bin
-      $HOME/.local/bin
-      $path)
+path=(
+    $GOPATH/bin
+    $HOME/.cargo/bin
+    $HOME/.local/bin
+    $path
+)
 
+# Autoload keychain for ssh-agent handling if it is installed
 if command -v keychain &> /dev/null
 then
     eval $(keychain --eval --quiet --nogui --noask)
 fi
 
-setopt NO_clobber
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-
+### Custom functions
+# Timing function for checking zsh load speed
 timezsh() {
     shell=$SHELL
     for i in $(seq 1 10)
@@ -68,16 +75,17 @@ timezsh() {
     done
 }
 
-if [ ! -f "$HOME/.zsh_aliases" ]
-then
-    touch $HOME/.zsh_aliases
-fi
-
+### Environment specific include files
 include_files=(
     "$HOME/.zsh_aliases"
+    "$HOME/.zsh_exports"
 )
 
-for file in $include_files
-do
+for file in $include_files; do
+    if [ ! -f $file ]
+    then
+        touch $file
+    fi
+
     source $file
 done
