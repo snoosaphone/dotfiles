@@ -45,6 +45,17 @@ source $ZSH/oh-my-zsh.sh
 setopt NO_clobber # Do not clobber files by default
 setopt hist_ignore_all_dups # Replace old history with the newest call to an identical call
 setopt hist_ignore_space # Remove history lines that start with spaces
+setopt correctall # Correct commands
+
+# Enable compinit advanced completion
+autoload -Uz compinit
+compinit
+
+# Completion options
+# Give descriptions of what the types of completions given
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+# Give an actual output when there is no match
+zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 
 ### User configuration
 export EDITOR=nvim
@@ -79,6 +90,7 @@ timezsh() {
 include_files=(
     "$HOME/.zsh_aliases"
     "$HOME/.zsh_exports"
+    "$HOME/.zsh_local"
 )
 
 for file in $include_files; do
