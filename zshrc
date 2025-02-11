@@ -20,7 +20,7 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment one of the following lines to change the auto-update behavior
 zstyle ':omz:update' mode reminder frequency 14
 
-# Plugins
+### Plugins
 # Install the zsh-autosuggestions plugin if it doesn't exist
 if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]
 then
@@ -45,7 +45,7 @@ source $ZSH/oh-my-zsh.sh
 setopt NO_clobber # Do not clobber files by default
 setopt hist_ignore_all_dups # Replace old history with the newest call to an identical call
 setopt hist_ignore_space # Remove history lines that start with spaces
-setopt correctall # Correct commands
+# setopt correctall # Correct commands
 
 # Enable compinit advanced completion
 autoload -Uz compinit
@@ -101,3 +101,8 @@ for file in $include_files; do
 
     source $file
 done
+
+# NVM required config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
