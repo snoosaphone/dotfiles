@@ -21,3 +21,8 @@ if [ ! -L $HOME/.tmux.conf ]
 then
     ln -fs $PWD/tmux.conf $HOME/.tmux.conf
 fi
+
+if [ ! -L $HOME/.wezterm.lua ]
+then
+    ln -fs $PWD/wezterm.lua $HOME/.wezterm.lua
+fi
