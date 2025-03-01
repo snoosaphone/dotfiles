@@ -9,6 +9,7 @@ local success, stdout, _ = wezterm.run_child_process({
     "org.gnome.desktop.interface",
     "cursor-theme"
 })
+
 if success then
     xcursor_theme = stdout:gsub("'(.+)'\n", "%1")
 end
@@ -29,10 +30,10 @@ local config = wezterm.config_builder()
 config.color_scheme = 's3r0 modified (terminal.sexy)'
 -- config.color_scheme = 'Mashup Colors (terminal.sexy)'
 -- config.color_scheme = 'Gruvbox dark, pale (base16)'
-config.color_scheme = 'Gruvbox Material (Gogh)'
+-- config.color_scheme = 'Gruvbox Material (Gogh)'
 
 config.font = wezterm.font 'Inconsolata Nerd Font Mono'
-config.font_size = 12.5
+config.font_size = 12
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
 config.window_padding = {
@@ -42,7 +43,7 @@ config.window_padding = {
     bottom = '0'
 }
 
-config.window_background_opacity = 0.97
+-- config.window_background_opacity = 0.9
 config.xcursor_theme = xcursor_theme
 config.xcursor_size = xcursor_size
 
