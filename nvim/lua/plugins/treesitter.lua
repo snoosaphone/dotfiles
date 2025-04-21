@@ -11,6 +11,7 @@ return {
                 'c_sharp',
                 'comment',
                 'css',
+                'gdscript',
                 'gitignore',
                 'html',
                 'java',
@@ -43,5 +44,5 @@ return {
         -- require('nvim-treesitter.install').prefer_git = true
         -- TSUpdate
     end,
-    lazy = false,
+    -- lazy = false,
 }

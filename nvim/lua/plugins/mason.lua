@@ -44,18 +44,17 @@ return {
                 'ansiblels',
                 'arduino_language_server',
                 'bashls',
-                'clangd',
+                'clangd', -- C/C++
                 -- 'hadolint', -- Dockerfile linting
-                'intelephense',
-                -- 'jdtls', -- java
+                'intelephense', -- PHP
+                'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
                 -- 'prettier',
                 'pylsp',
                 'rust_analyzer',
-                -- 'snyk',
+                -- 'snyk_ls',
                 'ts_ls', -- Typscript
-                -- 'volar', -- Vue
                 'yamlls',
             }
         }
@@ -114,7 +113,8 @@ return {
                         pylsp = {
                             plugins = {
                                 pycodestyle = {
-                                    ignore = {'E501'}
+                                    ignore = {'E501'},
+                                    maxLineLength = 120
                                 }
                             }
                         }
@@ -128,14 +128,7 @@ return {
                 flags = {
                     debounce_text_changes = 100,
                 }
-            }
-
-            -- ['gdshader_lsp'] = function()
-                -- lspconfig.gdshader_lsp.setup {
-                    -- capabilities = capabilities,
-                    -- on_attach = on_attach,
-                -- }
-            -- end,
+            },
         }
     end,
     dependencies = {

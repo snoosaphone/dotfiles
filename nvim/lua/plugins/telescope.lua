@@ -23,6 +23,7 @@ return {
             if num_selections > 1 then
                 actions.send_selected_to_qflist(prompt_bufnr)
                 actions.open_qflist()
+                print(action_state.get_current_picker(prompt_bufnr))
             else
                 actions.file_edit(prompt_bufnr)
             end
@@ -38,6 +39,7 @@ return {
                 '.webp$',
                 '.uproject$',
                 '-workspace$',
+                'node_modules',
             },
             layout_config = { prompt_position = 'top' },
             layout_strategy = 'horizontal',
