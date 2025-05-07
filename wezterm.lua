@@ -20,14 +20,15 @@ local success, _, _ = wezterm.run_child_process({
     "org.gnome.desktop.interface",
     "cursor-size"
 })
+
 if success then
     xcursor_size = tonumber(stdout)
 end
 
 local config = wezterm.config_builder()
 
--- config.color_scheme = 'darkmatrix'
 config.color_scheme = 's3r0 modified (terminal.sexy)'
+-- config.color_scheme = 'darkmatrix'
 -- config.color_scheme = 'Mashup Colors (terminal.sexy)'
 -- config.color_scheme = 'Gruvbox dark, pale (base16)'
 -- config.color_scheme = 'Gruvbox Material (Gogh)'
@@ -42,6 +43,8 @@ config.window_padding = {
     top = '0',
     bottom = '0'
 }
+
+config.automatically_reload_config = true
 
 -- config.window_background_opacity = 0.9
 config.xcursor_theme = xcursor_theme
