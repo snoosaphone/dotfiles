@@ -1,9 +1,7 @@
 return {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     config = function()
         require('mason').setup()
-
-        local mason_lspconfig = require('mason-lspconfig')
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -24,21 +22,12 @@ return {
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, bufopts)
             vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-            -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
             vim.keymap.set('n', '<leader><leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-            -- DAP debug
-            if dap then
-                vim.keymap.set('n', '<F5>', function() dap.continue() end, bufopts)
-                vim.keymap.set('n', '<F10>', function() dap.step_over() end, bufopts)
-                vim.keymap.set('n', '<F11>', function() dap.step_into() end, bufopts)
-                vim.keymap.set('n', '<F12>', function() dap.step_out() end, bufopts)
-                vim.keymap.set('n', '<leader>b', function() dap.toggle_breakpoint() end, bufopts)
-            end
         end
 
-        mason_lspconfig.setup {
+        require('mason-lspconfig').setup {
+            automatic_enable = true,
             automatic_installation = true,
             ensure_installed = {
                 'ansiblels',
@@ -47,92 +36,92 @@ return {
                 'clangd', -- C/C++
                 -- 'hadolint', -- Dockerfile linting
                 'intelephense', -- PHP
-                'jdtls', -- java
+                -- 'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
-                -- 'prettier',
                 'pylsp',
                 'rust_analyzer',
-                -- 'snyk_ls',
                 'ts_ls', -- Typscript
                 'yamlls',
             }
         }
 
-        local lspconfig = require('lspconfig')
-
-        mason_lspconfig.setup_handlers {
-            function(server_name)
-                lspconfig[server_name].setup {
-                    capabilities = capabilities,
-                    on_attach = on_attach
-                }
-            end,
-
-            ['rust_analyzer'] = function()
-                lspconfig.rust_analyzer.setup {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = {
-                        ['rust-analyzer'] = {
-                            checkOnSave = true,
-                            -- check = {
-                                -- command = 'clippy',
-                                -- extraArgs = { '--', '-Dclippy::all', '-Wclippy::pedantic' },
-                            -- },
-                            diagnostics = {
-                                enable = true,
-                                experimental = {
-                                    enable = true,
-                                }
-                            }
-                        }
-                    }
-                }
-            end,
-
-            ['lua_ls'] = function()
-                lspconfig.lua_ls.setup {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { 'vim' }
-                            }
-                        }
-                    }
-                }
-            end,
-
-            ['pylsp'] = function()
-                lspconfig.pylsp.setup {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                    settings = {
-                        pylsp = {
-                            plugins = {
-                                pycodestyle = {
-                                    ignore = {'E501'},
-                                    maxLineLength = 120
-                                }
-                            }
-                        }
-                    }
-                }
-            end,
-
-            lspconfig.gdscript.setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                flags = {
-                    debounce_text_changes = 100,
-                }
+        vim.diagnostic.config ({
+            virtual_text = {
+                source = "always",
             },
-        }
+            severity_sort = true,
+            float = {
+                source = "always"
+            },
+        })
+
+        -- Kick the logging to debug level
+        -- vim.lsp.set_log_level("debug")
+
+        vim.lsp.config('gdscript', {
+            flags = {
+                debounce_text_changes = 100,
+            }
+        })
+
+        vim.lsp.config('lua_ls', {
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = {
+                            'vim'
+                        }
+                    }
+                }
+            }
+        })
+
+        vim.lsp.config('pylsp', {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = {
+                                'E501' -- Ignore line length pep8 warnings
+                            },
+                            maxLineLength = 120,
+                        }
+                    }
+                }
+            }
+        })
+
+        vim.lsp.config("rust_analyzer", {
+            settings = {
+                ['rust_analyzer'] = {
+                    check = {
+                        command = 'clippy',
+                        extraArgs = {
+                            '--',
+                            '-D clippy::all',
+                            '-W clippy::pedantic',
+                            '-W clippy::restriction'
+                        },
+                    },
+                    diagnostics = {
+                        enable = true,
+                        experimental = {
+                            enable = true,
+                        }
+                    }
+                }
+            }
+        })
+
+        vim.lsp.config("*", {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
     end,
     dependencies = {
-        'williamboman/mason-lspconfig.nvim',
+        'mason-org/mason-lspconfig.nvim',
         'jay-babu/mason-nvim-dap.nvim',
     },
+    lazy = false,
 }

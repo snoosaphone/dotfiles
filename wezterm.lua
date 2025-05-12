@@ -1,5 +1,8 @@
 local wezterm = require 'wezterm'
 
+local config = wezterm.config_builder()
+
+-- Fixing the cursor theme
 local xcursor_size = nil
 local xcursor_theme = nil
 
@@ -25,8 +28,11 @@ if success then
     xcursor_size = tonumber(stdout)
 end
 
-local config = wezterm.config_builder()
+config.xcursor_theme = xcursor_theme
+config.xcursor_size = xcursor_size
+-- end cursor theme
 
+-- Visual options
 config.color_scheme = 's3r0 modified (terminal.sexy)'
 -- config.color_scheme = 'darkmatrix'
 -- config.color_scheme = 'Mashup Colors (terminal.sexy)'
@@ -43,11 +49,9 @@ config.window_padding = {
     top = '0',
     bottom = '0'
 }
+-- config.window_background_opacity = 0.9
+-- end visual options
 
 config.automatically_reload_config = true
-
--- config.window_background_opacity = 0.9
-config.xcursor_theme = xcursor_theme
-config.xcursor_size = xcursor_size
 
 return config

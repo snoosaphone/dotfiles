@@ -42,9 +42,17 @@ return {
                             close = { 'q', '<Esc>' },
                         },
                     },
-                    windows = { indent = 1 },
+                    windows = {
+                        indent = 1
+                    },
                     render = {
                         max_type_length = nil,
+                    },
+                    ensure_installed = {
+                        'codelldb',
+                        'cpptools',
+                        'debugpy',
+
                     },
                 })
             end,
@@ -69,28 +77,42 @@ return {
             dapui.close()
         end
 
-        vim.fn.sign_define('DapBreakpoint', { text = 'ᛒ', texthl = '', lineh = '', numhl = '' })
+        -- vim.fn.sign_define('DapBreakpoint', { text = 'ᛒ', texthl = '', lineh = '', numhl = '' })
+        vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', lineh = '', numhl = '' })
         vim.fn.sign_define('DapBreakpointCondition', { text = '🝌', texthl = '', lineh = '', numhl = '' })
-        vim.fn.sign_define('DapStopped', { text = '⮞' })
+        vim.fn.sign_define('DapStopped', { text = '▶️' })
 
         dap.adapters.gdb = {
             type = 'executable',
             command = 'gdb',
-            args = { '-i', 'dap' }
+            args = { '-i', 'dap' },
         }
 
-        dap.configurations.rust = {
-            {
-                name = 'Launch',
-                type = 'gdb',
-                request = 'launch',
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopAtBeginningOfMainSubprogram = false,
-            },
+        dap.adapters.lldb = {
+            type = 'executable',
+            command = 'lldb',
         }
+
+        dap.adapters.debugpy = {
+            type = 'executable',
+            command = 'debugpy',
+        }
+
+        dap.configurations = {
+            -- rust = {
+                -- {
+                    -- type = 'gdb',
+                    -- name = 'Debug',
+                    -- request = 'launch',
+                    -- program = function()
+                        -- return vim.fn.getcwd() .. '/target/debug/faultybranches'
+                    -- end,
+                    -- stopAtBeginningOfMainSubprogram = true,
+                -- },
+            -- },
+        }
+
+        require('dap.ext.vscode').load_launchjs('.launch.json', {})
     end,
     keys = {
         {

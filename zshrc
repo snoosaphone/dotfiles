@@ -59,12 +59,14 @@ zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 
 ### User configuration
 export EDITOR=nvim
+export NVM_CONFIG_PREFIX=$HOME/.local/
 
 # Paths to prepend to system path
 path=(
     $GOPATH/bin
     $HOME/.cargo/bin
     $HOME/.local/bin
+    $NVM_CONFIG_PREFIX/bin
     $path
 )
 
