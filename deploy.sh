@@ -26,3 +26,8 @@ if [ ! -L $HOME/.wezterm.lua ]
 then
     ln -fs $PWD/wezterm.lua $HOME/.wezterm.lua
 fi
+
+if [ ! -L $HOME/.config/nvim/snippets ]
+then
+    ln -fs $PWD/nvim/snippets $HOME/.config/nvim/snippets
+fi
