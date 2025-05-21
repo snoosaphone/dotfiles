@@ -48,6 +48,9 @@ Cross-platform terminal emulator built from the ground up with speed, good font 
 
 Simple setup with automatic config reloading, a colorscheme, font and a couple other bits.
 
+The `wezterm.local_linux.lua` file is meant as a template for creating a local configuration while also tracking generic linux xcursor configurations
+required to fix an issue with cursor display. To use it, copy the file to `~/.config/wezterm/local.lua` and wezterm should reload configs automatically.
+
 ### Zsh
 
 NOTE: Auto-installs oh-my-zsh directly from the github repository when a user opens Zsh for the first time

@@ -22,9 +22,10 @@ then
     ln -fs $PWD/tmux.conf $HOME/.tmux.conf
 fi
 
-if [ ! -L $HOME/.wezterm.lua ]
+if [ ! -L $HOME/.config/wezterm/wezterm.lua ]
 then
-    ln -fs $PWD/wezterm.lua $HOME/.wezterm.lua
+    mkdir -p $HOME/.config/wezterm
+    ln -fs $PWD/wezterm.lua $HOME/.config/wezterm/wezterm.lua
 fi
 
 if [ ! -L $HOME/.config/nvim/snippets ]

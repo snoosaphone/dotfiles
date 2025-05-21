@@ -2,36 +2,6 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
--- Fixing the cursor theme
-local xcursor_size = nil
-local xcursor_theme = nil
-
-local success, stdout, _ = wezterm.run_child_process({
-    "gsettings",
-    "get",
-    "org.gnome.desktop.interface",
-    "cursor-theme"
-})
-
-if success then
-    xcursor_theme = stdout:gsub("'(.+)'\n", "%1")
-end
-
-local success, _, _ = wezterm.run_child_process({
-    "gsettings",
-    "get",
-    "org.gnome.desktop.interface",
-    "cursor-size"
-})
-
-if success then
-    xcursor_size = tonumber(stdout)
-end
-
-config.xcursor_theme = xcursor_theme
-config.xcursor_size = xcursor_size
--- end cursor theme
-
 -- Visual options
 config.color_scheme = 's3r0 modified (terminal.sexy)'
 -- config.color_scheme = 'darkmatrix'
@@ -53,5 +23,12 @@ config.window_padding = {
 -- end visual options
 
 config.automatically_reload_config = true
+
+local local_config_filename = os.getenv('HOME') .. '/.config/wezterm/local.lua'
+local local_config = io.open(local_config_filename, 'r')
+if local_config~=nil then
+    local local_setup = require('local')
+    config = local_setup.setup(config)
+end
 
 return config
