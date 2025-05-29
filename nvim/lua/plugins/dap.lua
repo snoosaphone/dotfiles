@@ -2,6 +2,9 @@ return {
     'mfussenegger/nvim-dap',
     dependencies = {
         {
+            'jay-babu/mason-nvim-dap.nvim'
+        },
+        {
             'nvim-neotest/nvim-nio',
         },
         {
@@ -48,12 +51,6 @@ return {
                     render = {
                         max_type_length = nil,
                     },
-                    ensure_installed = {
-                        'codelldb',
-                        'cpptools',
-                        'debugpy',
-
-                    },
                 })
             end,
         },
@@ -65,15 +62,32 @@ return {
         },
     },
     config = function()
+        local mason_dap = require('mason-nvim-dap')
         local dap, dapui = require('dap'), require('dapui')
 
-        dap.listeners.after.event_initialized['dapui_config'] = function()
+        mason_dap.setup({
+            ensure_installed = {
+                'codelldb',
+                'debugpy',
+            },
+            automatic_installation = true,
+            handlers = {
+                function(config)
+                    require('mason-nvim-dap').default_setup(config)
+                end,
+            }
+        })
+
+        dap.listeners.before.attach.dapui_config = function()
             dapui.open()
         end
-        dap.listeners.after.event_terminated['dapui_config'] = function()
+        dap.listeners.before.launch.dapui_config = function()
+            dapui.open()
+        end
+        dap.listeners.before.event_terminated.dapui_config = function()
             dapui.close()
         end
-        dap.listeners.before.event_exited['dapui_config'] = function()
+        dap.listeners.before.event_exited.dapui_config = function()
             dapui.close()
         end
 
@@ -99,17 +113,35 @@ return {
         }
 
         dap.configurations = {
-            -- rust = {
-                -- {
-                    -- type = 'gdb',
-                    -- name = 'Debug',
-                    -- request = 'launch',
-                    -- program = function()
-                        -- return vim.fn.getcwd() .. '/target/debug/faultybranches'
-                    -- end,
-                    -- stopAtBeginningOfMainSubprogram = true,
-                -- },
-            -- },
+            rust = {
+                {
+                    type = 'gdb',
+                    name = 'Debug',
+                    request = 'launch',
+                    program = function()
+                        return vim.fn.getcwd() .. '/target/debug/faultybranches'
+                    end,
+                    stopAtBeginningOfMainSubprogram = true,
+                },
+            },
+            python = {
+                {
+                    type = 'python',
+                    request = 'launch',
+                    name = 'Launch file',
+                    program = '${file}',
+                    pythonPath = function()
+                        local cwd = vim.fn.getcwd()
+                        if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+                            return cwd .. '/venv/bin/python'
+                        elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+                            return cwd .. '/.venv/bin/python'
+                        else
+                            return '/usr/bin/python'
+                        end
+                    end,
+                }
+            }
         }
 
         require('dap.ext.vscode').load_launchjs('.launch.json', {})

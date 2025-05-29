@@ -19,7 +19,7 @@ require('lazy').setup({
     require('plugins/gruvbox'),
     require('plugins/comment'),
     require('plugins/dap'),
-    require('plugins/dap-python'),
+    -- require('plugins/dap-python'),
     require('plugins/treesitter'),
     require('plugins/gitsigns'),
     require('plugins/luasnip'),

@@ -121,7 +121,6 @@ return {
     end,
     dependencies = {
         'mason-org/mason-lspconfig.nvim',
-        'jay-babu/mason-nvim-dap.nvim',
     },
     lazy = false,
 }
