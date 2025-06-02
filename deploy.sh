@@ -32,3 +32,8 @@ if [ ! -L $HOME/.config/nvim/snippets ]
 then
     ln -fs $PWD/nvim/snippets $HOME/.config/nvim/snippets
 fi
+
+if [ ! -L $HOME/.oh-my-zsh/custom/themes ]
+then
+    ln -fs $PWD fb-custom.zsh-theme $HOME/.oh-my-zsh/custom/themes/fb-custom.zsh-theme
+fi
