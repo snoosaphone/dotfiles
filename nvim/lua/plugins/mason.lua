@@ -39,6 +39,7 @@ return {
                 -- 'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
+                'pylint',
                 'pylsp',
                 'rust_analyzer',
                 'ts_ls', -- Typscript
