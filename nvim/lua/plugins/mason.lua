@@ -115,6 +115,8 @@ return {
             }
         })
 
+        vim.lsp.config("pyright", {})
+
         vim.lsp.config("*", {
             capabilities = capabilities,
             on_attach = on_attach,
