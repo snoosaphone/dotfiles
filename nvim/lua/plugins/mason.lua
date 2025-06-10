@@ -39,7 +39,7 @@ return {
                 -- 'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
-                'pylint',
+                -- 'pylint',
                 'pylsp',
                 'rust_analyzer',
                 'ts_ls', -- Typscript
@@ -83,10 +83,17 @@ return {
                 pylsp = {
                     plugins = {
                         pycodestyle = {
+                            enabled = false,
                             ignore = {
                                 'E501' -- Ignore line length pep8 warnings
                             },
                             maxLineLength = 120,
+                        },
+                        pylint = {
+                            enabled = true,
+                            args = {
+                                '--disable=line-too-long'
+                            },
                         }
                     }
                 }
@@ -114,8 +121,6 @@ return {
                 }
             }
         })
-
-        vim.lsp.config("pyright", {})
 
         vim.lsp.config("*", {
             capabilities = capabilities,
