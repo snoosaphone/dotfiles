@@ -61,12 +61,16 @@ return {
         -- vim.lsp.set_log_level("debug")
 
         vim.lsp.config('gdscript', {
+            capabilities = capabilities,
+            on_attach = on_attach,
             flags = {
                 debounce_text_changes = 100,
             }
         })
 
         vim.lsp.config('lua_ls', {
+            capabilities = capabilities,
+            on_attach = on_attach,
             settings = {
                 Lua = {
                     diagnostics = {
@@ -79,6 +83,8 @@ return {
         })
 
         vim.lsp.config('pylsp', {
+            capabilities = capabilities,
+            on_attach = on_attach,
             settings = {
                 pylsp = {
                     plugins = {
@@ -101,6 +107,8 @@ return {
         })
 
         vim.lsp.config("rust_analyzer", {
+            capabilities = capabilities,
+            on_attach = on_attach,
             settings = {
                 ['rust_analyzer'] = {
                     check = {

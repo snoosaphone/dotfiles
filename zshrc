@@ -104,6 +104,13 @@ for file in $include_files; do
     source $file
 done
 
+# Custom rsync move function that also removes empty directories that have their contents removed
+# NOTE: This will delete *any* empty directories in the CWD
+rmv() {
+    rsync -avzhP --remove-source-files --ignore-existing "${@:1:$#-1}" "${@:$#}" && \
+        find ./* -depth -type d -empty -exec rmdir "{}" \;
+}
+
 # NVM required config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
