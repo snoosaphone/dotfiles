@@ -56,24 +56,24 @@ required to fix an issue with cursor display. To use it, copy the file to `~/.co
 NOTE: Auto-installs oh-my-zsh directly from the github repository when a user opens Zsh for the first time
 
 Sets up the oh-my-zsh framework with:
-    - Colorscheme
-    - Autosuggestions and virtual text
-    - Prompt theme
-    - Python virtualenv auto-loader
-    - .env auto-loader
-    - AWS helper
-    - Git helper and prompt updater
+- Colorscheme
+- Autosuggestions and virtual text
+- Prompt theme
+- Python virtualenv auto-loader
+- .env auto-loader
+- AWS helper
+- Git helper and prompt updater
 
 The config adds the following settings outside of oh-my-zsh:
-    - PATH environment variable additions for:
-        - Go binaries
-        - Rust binaries
-        - User $HOME based `.local/bin`
-        - NVM (Nodejs) binaries
-    - Keychain initialization for caching SSH keys
-    - Adding a timing function for checking ZSH load timing
-    - NVM (Nodejs) environment variable setup and completion loading
-    - Local specific configuration file loading, with three initial configs:
-        - `.zsh_aliases`: Aliases for local specific commands
-        - `.zsh_exports`: Exported variables for a specific system
-        - `.zsh_local`: Local ZSH settings for a specific system such as any environment specific bash required to set up a system's shell or direct ZSH settings
+- PATH environment variable additions for:
+    - Go binaries
+    - Rust binaries
+    - User $HOME based `.local/bin`
+    - NVM (Nodejs) binaries
+- Keychain initialization for caching SSH keys
+- Adding a timing function for checking ZSH load timing
+- NVM (Nodejs) environment variable setup and completion loading
+- Local specific configuration file loading, with three initial configs:
+    - `.zsh_aliases`: Aliases for local specific commands
+    - `.zsh_exports`: Exported variables for a specific system
+    - `.zsh_local`: Local ZSH settings for a specific system such as any environment specific bash required to set up a system's shell or direct ZSH settings
