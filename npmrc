@@ -1,0 +1,2 @@
+# Set the prefix to the user directory for "global" installs as non-root
+prefix=~/.local/
