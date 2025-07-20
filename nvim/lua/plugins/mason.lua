@@ -36,13 +36,11 @@ return {
                 'clangd', -- C/C++
                 -- 'hadolint', -- Dockerfile linting
                 'intelephense', -- PHP
-                -- 'jdtls', -- java
                 'lua_ls',
                 'marksman', -- markdown
-                -- 'pylint',
                 'pylsp',
                 'rust_analyzer',
-                'ts_ls', -- Typscript
+                -- 'ts_ls', -- Typscript
                 'yamlls',
             }
         }
@@ -136,6 +134,7 @@ return {
         })
     end,
     dependencies = {
+        'neovim/nvim-lspconfig',
         'mason-org/mason-lspconfig.nvim',
     },
     lazy = false,

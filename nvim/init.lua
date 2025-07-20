@@ -42,6 +42,9 @@
 --
 -- Created: 7/2/2012
 
+local vim = vim
+vim.loader.enable()
+
 require('custom_functions')
 require('custom_commands')
 require('keymappings')

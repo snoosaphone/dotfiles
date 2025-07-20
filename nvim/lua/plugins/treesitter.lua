@@ -18,10 +18,13 @@ return {
                 'javascript',
                 'json',
                 'lua',
+                'markdown',
+                'markdown_inline',
                 'python',
                 'query',
                 'rust',
                 'sql',
+                'tera',
                 'toml',
                 'tsx',
                 'typescript',
@@ -41,8 +44,5 @@ return {
                 enable = true,
             }
         }
-        -- require('nvim-treesitter.install').prefer_git = true
-        -- TSUpdate
     end,
-    -- lazy = false,
 }

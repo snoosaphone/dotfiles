@@ -8,8 +8,14 @@ then
 fi
 
 ### ZSH Configuration
+## Path variables
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+export MANPAGER="less -R --use-color -Dd+r -Du+b" # Colored MAN pages
 
 ZSH_THEME="fb-custom"
 
@@ -17,8 +23,21 @@ ZSH_THEME="fb-custom"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
+# History
+HISTCONTROL=ignoreboth
+
 # Uncomment one of the following lines to change the auto-update behavior
 zstyle ':omz:update' mode reminder frequency 14
+
+# Keybindings
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+# bindkey "^h" backward-word
+# bindkey "^k" kill-line
+# bindkey "^j" backward-word
+# bindkey "^k" forward-word
+# bindkey "^J" history-search-forward
+# bindkey "^K" history-search-backward
 
 ### Plugins
 # Install the zsh-autosuggestions plugin if it doesn't exist
@@ -31,6 +50,7 @@ plugins=(
     aws
     copypath
     dotenv
+    fzf
     git
     history
     zsh-autosuggestions
@@ -47,9 +67,18 @@ setopt hist_ignore_all_dups # Replace old history with the newest call to an ide
 setopt hist_ignore_space # Remove history lines that start with spaces
 # setopt correctall # Correct commands
 
+# Experimental
+setopt append_history inc_append_history share_history
+# setopt auto_menu menu_complete
+# setopt autocd
+setopt auto_param_slash
+setopt no_case_glob no_case_match
+# setopt globdots
+
 # Enable compinit advanced completion
-autoload -Uz compinit
-compinit
+zmodload zsh/complist
+autoload -Uz compinit && compinit
+autoload -U colors && colors
 
 # Completion options
 # Give descriptions of what the types of completions given
@@ -87,6 +116,14 @@ timezsh() {
         echo $((($(date +%s%N) - $ts)/1000000))ms
     done
 }
+
+# Aliases Universal
+alias rm="rm -Iv" # Prompt for removal of more than three files or recursively to give some protection of mistakes
+alias df="df -h" # Always use the human readable formatting
+alias du="du -h -d 1" # Always use human readable format and only for the current dir by default
+alias k="killall" # Quick killall
+alias p="ps aux | grep $1" # Quick 
+alias v="$EDITOR" # Just open the usual editor 
 
 ### Environment specific include files
 include_files=(
