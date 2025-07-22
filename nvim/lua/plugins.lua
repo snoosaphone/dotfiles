@@ -32,6 +32,5 @@ require('lazy').setup({
     require('plugins.markdown-preview'), -- Open a preview of markdown rendered in a browser
     require('plugins.render-markdown'), -- Render markdown directly in nvim (experimental, may take over for markdown-preview)
     require('plugins.autopairs'), -- Autocomplete symbol pairs when typing (experimental)
-    require('plugins.nvim-biscuits'), -- Virtual text on closing tags for what the start of the block is (experimental)
     require('plugins.twilight') -- Focus mode, dim lines around the current segment of code
 })
