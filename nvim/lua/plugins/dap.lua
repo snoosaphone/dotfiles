@@ -96,26 +96,26 @@ return {
         vim.fn.sign_define('DapBreakpointCondition', { text = '🝌', texthl = '', lineh = '', numhl = '' })
         vim.fn.sign_define('DapStopped', { text = '▶️' })
 
-        dap.adapters.gdb = {
-            type = 'executable',
-            command = 'gdb',
-            args = { '-i', 'dap' },
-        }
+        -- dap.adapters.gdb = {
+            -- type = 'executable',
+            -- command = 'gdb',
+            -- args = { '-i', 'dap' },
+        -- }
 
         dap.adapters.lldb = {
-            type = 'executable',
             command = 'lldb',
+            type = 'executable',
         }
 
         dap.adapters.debugpy = {
-            type = 'executable',
             command = 'debugpy',
+            type = 'executable',
         }
 
         dap.configurations = {
             rust = {
                 {
-                    type = 'gdb',
+                    type = 'lldb',
                     name = 'Debug',
                     request = 'launch',
                     program = function()
@@ -130,14 +130,6 @@ return {
                     name = 'Launch current file',
                     request = 'launch',
                     program = '${file}',
-                    -- pythonPath = function()
-                        -- local cwd = vim.fn.getcwd()
-                        -- if vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                            -- return cwd .. '/.venv/bin/python'
-                        -- else
-                            -- return '/usr/bin/python'
-                        -- end
-                    -- end,
                 }
             }
         }
