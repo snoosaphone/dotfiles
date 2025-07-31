@@ -4,6 +4,7 @@
 #
 # WARNING: This script _will_ clobber existing files by force linking
 
+# Relative path/name as keys, destination path as values
 declare -A configs=(
     ["zshrc"]="$HOME/.zshrc"
     ["fb-custom.zsh-theme"]="$HOME/.oh-my-zsh/custom/themes"
