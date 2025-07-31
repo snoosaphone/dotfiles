@@ -1,46 +1,31 @@
-#Zsh
-if [ ! -L $HOME/.zshrc ]
-then
-    ln -fs $PWD/zshrc $HOME/.zshrc
-fi
+#!/usr/bin/env bash
 
-if [ ! -L $HOME/.oh-my-zsh/custom/themes ]
-then
-    ln -fs $PWD/fb-custom.zsh-theme $HOME/.oh-my-zsh/custom/themes/fb-custom.zsh-theme
-fi
+# Deployment script for dotfiles
+#
+# WARNING: This script _will_ clobber existing files by force linking
 
-# Neovim
-mkdir -p $HOME/.config/nvim
-if [ ! -L $HOME/.config/nvim/init.lua ]
-then
-    ln -fs $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
-fi
+declare -A configs=(
+    ["zshrc"]="$HOME/.zshrc"
+    ["fb-custom.zsh-theme"]="$HOME/.oh-my-zsh/custom/themes"
+    ["nvim/init.lua"]="$HOME/.config/nvim/init.lua"
+    ["nvim/lua"]="$HOME/.config/nvim/lua"
+    ["nvim/snippets"]="$HOME/.config/nvim/snippets"
+    ["tmux.conf"]="$HOME/.tmux.conf"
+    ["wezterm.lua"]="$HOME/.config/wezterm/wezterm.lua"
+    # ["wezterm.local_linux.lua"]="$HOME/.config/wezterm/local.lua"
+    ["npmrc"]="$HOME/.npmrc"
+)
 
-if [ ! -L $HOME/.config/nvim/lua ]
-then
-    ln -fs $PWD/nvim/lua $HOME/.config/nvim/lua
-fi
+declare -a config_directories=(
+    "$HOME/.config/nvim"
+    "$HOME/.config/wezterm"
+)
 
-if [ ! -L $HOME/.config/nvim/snippets ]
-then
-    ln -fs $PWD/nvim/snippets $HOME/.config/nvim/snippets
-fi
+for dir in ${config_directories[@]}; do
+    mkdir -p ${dir}
+done
 
-# Tmux
-if [ ! -L $HOME/.tmux.conf ]
-then
-    ln -fs $PWD/tmux.conf $HOME/.tmux.conf
-fi
-
-# Wezterm terminal emulator
-if [ ! -L $HOME/.config/wezterm/wezterm.lua ]
-then
-    mkdir -p $HOME/.config/wezterm
-    ln -fs $PWD/wezterm.lua $HOME/.config/wezterm/wezterm.lua
-fi
-
-# Nodejs
-if [ ! -L $HOME/.npmrc ]
-then
-    ln -fs $PWD/npmrc $HOME/.npmrc
-fi
+for dotfile in "${!configs[@]}"; do
+    echo "Deploying $PWD/${dotfile} to ${configs[$dotfile]}"
+    ln -fs "$PWD/${dotfile}" "${configs[$dotfile]}"
+done

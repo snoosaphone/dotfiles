@@ -8,7 +8,25 @@ Included are configs for:
 - wezterm
 - zsh
 
-While the setup is opinionated its goal is to provide desired behaviour rather than limiting to specific 
+## Deployment
+
+> [!WARNING]
+> This script _WILL_ clobber existing configuration files for the above applications. Read the script and backup files before running if needed.
+
+Just run `./deploy.sh`
+
+Configurations will be deployed to standard locations for a *nix/Mac user directory by force creating a symlink back to this repository's files.
+
+### Additions
+
+Configurations and their destinations are listed in the deploy script's associative array (dict) named `configs`. Additions or alterations to locations or new configs are to be added there.
+
+> [!NOTE]
+> The wezterm's local configuration file is not currently activated in the `configs` dict. It is meant as a local configuration file and is set up to handle some linux specific configuration settings that may not be applicable. Add this alongside the `wezterm.lua` config (uncommenting in the deploy script) and it will be automatically loaded by the main `wezterm.lua` config.
+
+## Updating
+
+`git pull` will give the latest changes and via symlinks they will immediately be available to the appropriate applications.
 
 ## Applications
 ### Neovim
