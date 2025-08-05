@@ -130,6 +130,13 @@ return {
                     name = 'Launch current file',
                     request = 'launch',
                     program = '${file}',
+                    pythonPath = function ()
+                        if vim.env.VIRTUAL_ENV then
+                            return vim.env.VIRTUAL_ENV .. '/bin/python'
+                        end
+
+                        return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
+                    end
                 }
             }
         }

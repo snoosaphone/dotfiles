@@ -10,7 +10,7 @@ Included are configs for:
 
 ## Deployment
 
-> [!WARNING]
+> [!CAUTION]
 > This script _WILL_ clobber existing configuration files for the above applications. Read the script and backup files before running if needed.
 
 Just run `./deploy.sh`

@@ -4,7 +4,7 @@ return {
         vim.treesitter.language.register('markdown', 'telekasten')
 
         require('render-markdown').setup({
-            enabled = true,
+            enabled = false,
             -- render_modes = { 'n', 'c', 't' },
             max_file_size = 10.0,
             debounce = 100,
